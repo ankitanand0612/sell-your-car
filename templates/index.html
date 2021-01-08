@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Ankit ML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+</head>
+
+
+<div class="w3-container w3-teal w3-center">
+  <h1>Using Machine Learning to determine Selling Price of Your Car</h1>
+</div>
+<div class="w3-panel w3-white">
+	<div class="w3-container w3-center">
+		<img src="img_car.jpg" alt="Car">
+	</div>
+</div>
+<div class="w3-container w3-center">
+  <p>Is this your car , who are you kidding </p>
+</div>
+
+
+
+<body>
+<form action="{{ url_for('predict')}}" method="post">
+
+
+	<!-- Trigger/Open the Modal -->
+	<button onclick="document.getElementById('id01').style.display='block'"
+	class="w3-container w3-ripple w3-teal w3-xxxlarge w3-block w3-hover-black">Price & Ownership Questions</button>
+	<div id="id01" class="w3-modal">
+  	<div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">&times;</span>
+    	<!--<div style="color:blue">-->
+    	<div class="w3-container w3-teal w3-center">
+        	
+        		<div class="w3-center">
+            	<h2> Price & Ownership related questions </h2></div>
+
+            	<h3>Year</h3>
+            	<input id="first" name="Year" type="number ">
+            	<h2>What is the Showroom Price?(In lakhs)</h2><br><input id="second" name="Present_Price" required="required">
+            	<h2>How Many Kilometers Drived?</h2><input id="third" name="Kms_Driven" required="required">
+            	<h2>How many owners previously had owned the car , excluding you(0 to 3) ?</h2><br><input id="fourth" name="Owner" required="required">
+            	<p>    </p>
+            	</div>
+            	</div>
+  				</div>
+				</div>
+
+				<button onclick="document.getElementById('id02').style.display='block'"
+				class="w3-container w3-ripple w3-teal w3-xxxlarge w3-block w3-hover-black">Car Type based Questions</button>
+					<div id="id02" class="w3-modal">
+  					<div class="w3-modal-content">
+    				<div class="w3-container">
+      				<span onclick="document.getElementById('id02').style.display='none'"
+      				class="w3-button w3-display-topright">&times;</span>
+    					<!--<div style="color:blue">-->
+    					<div class="w3-container w3-teal w3-center style= {padding: 25px;}">
+    						
+    						<h2>Car Type based Questions</h2>
+            				<h2>What Is the Fuel type?</h2><br><select name="Fuel_Type_Petrol" id="fuel" required="required">
+                			<option value="Petrol">Petrol</option>
+                			<option value="Diesel">Diesel</option>
+                			<option value="CNG">CNG</option>
+            				</select>
+           	
+            				<h2>Are you A Dealer or Individual</h2><br><select name="Seller_Type_Individual" id="resea" required="required">
+                			<option value="Dealer">Dealer</option>
+                			<option value="Individual">Individual</option>
+            				</select>
+            				<div {  padding-bottom: 10%;}>
+            				<h2>Transmission type</h2><br><select name="Transmission_Mannual" id="research" required="required">
+                			<option value="Mannual">Manual Car</option>
+                			<option value="Automatic">Automatic Car</option>
+                			<p>  /n </p>
+            				</select>
+            				</div>
+						</div>
+            		</div>
+  					</div>
+					</div>
+
+            <!--<br><br><button id="sub" type="submit ">Calculate the Selling Price</button>-->
+
+            <button onclick="document.getElementById('id03').style.display='block'"
+				class="w3-container w3-ripple w3-yellow w3-xxxlarge w3-block w3-hover-black">--- click here to Calculate the Selling Price --- </button>
+            <br>
+
+
+
+
+        </form>
+        <br><br><h3>{{ prediction_text }}</h3>
+    </div>
+
+<div class="w3-container w3-green">
+  <p>Footer</p>
+</div>
+<html>
+
+<!DOCTYPE html>
